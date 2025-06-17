@@ -4,7 +4,7 @@ import db from "../client.js"
 // The parameters had "{}" around them, but it was proventing them from bing added to the table "employees".
 export async function createEmployee( name, birthday, salary) {
   const result = await db.query(
-    'INSERT INTO employees (name, birthday, salary) VALUES ($1, $2, $3)RETURNING *;', [name, birthday, salary ]
+    'INSERT INTO employees (name, birthday, salary) VALUES ($1, $2, $3)RETURNING *;', [name, birthday, salary]
   )
   return result
 }
