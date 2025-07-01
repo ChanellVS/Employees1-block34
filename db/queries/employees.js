@@ -2,6 +2,7 @@
 import db from "../client.js"
 
 // The parameters had "{}" around them, but it was proventing them from bing added to the table "employees".
+<<<<<<< HEAD
 export async function createEmployee( {name, birthday, salary} ) {
   const sql = 
     `INSERT INTO employees (name, birthday, salary) 
@@ -10,6 +11,13 @@ export async function createEmployee( {name, birthday, salary} ) {
     const {rows: employee} = await db.query(sql, [name, birthday, salary]);
   
   return employee[0];
+=======
+export async function createEmployee( name, birthday, salary) {
+  const result = await db.query(
+    'INSERT INTO employees (name, birthday, salary) VALUES ($1, $2, $3)RETURNING *;', [name, birthday, salary]
+  )
+  return result
+>>>>>>> 42cc7565156bea0b12b4c7b3c9ed1bb91d5ecab0
 }
 
 // === Part 2 ===
